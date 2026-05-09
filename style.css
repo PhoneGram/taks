@@ -1,0 +1,227 @@
+/* ==================== الأساسيات ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Cairo', 'Tajawal', sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==================== تخصيص شريط التمرير ==================== */
+.scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: #94a3b8 #e2e8f0;
+}
+
+.scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-track {
+    background: #e2e8f0;
+    border-radius: 3px;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-track {
+    background: #334155;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #94a3b8;
+    border-radius: 3px;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #64748b;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: #64748b;
+}
+
+.dark .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* ==================== حركات انتقالية ==================== */
+#mainHeader {
+    transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+#welcomePage,
+#homePage,
+#settingsPage {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== تنسيق Checkbox مخصص ==================== */
+input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid #cbd5e1;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.dark input[type="checkbox"] {
+    border-color: #475569;
+}
+
+input[type="checkbox"]:checked {
+    background-color: #1e293b;
+    border-color: #1e293b;
+}
+
+.dark input[type="checkbox"]:checked {
+    background-color: #e2e8f0;
+    border-color: #e2e8f0;
+}
+
+input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.35rem;
+    height: 0.65rem;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: translate(-50%, -60%) rotate(45deg);
+}
+
+.dark input[type="checkbox"]:checked::after {
+    border-color: #1e293b;
+}
+
+input[type="checkbox"]:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(100, 116, 139, 0.3);
+}
+
+/* ==================== تحسينات للأجهزة المحمولة ==================== */
+@media (max-width: 640px) {
+    #welcomePage h1 {
+        font-size: 2rem;
+    }
+    
+    #welcomePage img {
+        width: 5rem;
+        height: 5rem;
+    }
+    
+    #welcomePage button {
+        padding: 0.75rem 2rem;
+        font-size: 1rem;
+    }
+    
+    #dateDisplay {
+        font-size: 1.1rem;
+    }
+    
+    #dayDisplay {
+        font-size: 0.95rem;
+    }
+    
+    .task-item {
+        padding: 0.75rem;
+    }
+}
+
+/* ==================== تحسينات PWA ==================== */
+@media (display-mode: standalone) {
+    body {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+    }
+}
+
+/* ==================== تأثيرات إضافية ==================== */
+button:active {
+    transform: scale(0.96);
+}
+
+button {
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+input[type="text"]::placeholder {
+    color: #94a3b8;
+}
+
+.dark input[type="text"]::placeholder {
+    color: #64748b;
+}
+
+/* ==================== تحسين النافذة المنبثقة ==================== */
+#modalOverlay > div {
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ==================== تنسيق عناصر الاختيار في النافذة المنبثقة ==================== */
+#daysContainer label {
+    transition: all 0.2s ease;
+}
+
+#daysContainer label:hover {
+    background-color: #f1f5f9;
+    border-color: #94a3b8;
+}
+
+.dark #daysContainer label:hover {
+    background-color: #334155;
+    border-color: #64748b;
+}
+
+/* ==================== منع التحديد أثناء السحب ==================== */
+.no-select {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* ==================== تحسين ظهور الهيدر ==================== */
+header {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
